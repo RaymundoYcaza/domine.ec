@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import PostCard from '@/components/blog/PostCard.astro';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const recientes = posts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<section class="py-16 px-4" style="background-color: #f9f9f7;">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="flex items-center justify-between mb-10">
+      <h2 class="font-display font-extrabold text-3xl text-brand-dark">
+        Lo último del blog
+      </h2>
+      <a
+        href="/blog"
+        class="font-display font-semibold text-sm text-brand-dark/50 hover:text-brand-yellow transition-colors duration-200 flex items-center gap-1"
+      >
+        Ver todo
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    {recientes.length > 0 ? (
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {recientes.map((post) => <PostCard post={post} />)}
+      </div>
+    ) : (
+      <p class="text-center text-brand-muted font-display py-16">
+        Pronto habrá contenido aquí. ¡Vuelve pronto!
+      </p>
+    )}
+
+  </div>
+</section>
+

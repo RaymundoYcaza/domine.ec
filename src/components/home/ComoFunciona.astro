@@ -1,0 +1,59 @@
+---
+const pasos = [
+  {
+    numero: '01',
+    titulo: 'Elige tu materia',
+    descripcion: 'Busca el tema que necesitas entre todas las materias disponibles.',
+    color: 'text-brand-yellow',
+    bg: 'bg-brand-yellow/10',
+  },
+  {
+    numero: '02',
+    titulo: 'Aprende con ejemplos',
+    descripcion: 'Cada explicación usa situaciones de la vida real para que entiendas fácil.',
+    color: 'text-brand-blue',
+    bg: 'bg-brand-blue/10',
+  },
+  {
+    numero: '03',
+    titulo: 'Practica y descubre',
+    descripcion: 'Refuerza lo aprendido con actividades y retos que hacen el estudio divertido.',
+    color: 'text-brand-green',
+    bg: 'bg-brand-green/20',
+  },
+];
+---
+
+<section class="py-16 px-4 bg-white">
+  <div class="max-w-5xl mx-auto">
+
+    <h2 class="font-display font-extrabold text-3xl text-brand-dark text-center mb-12">
+      ¿Cómo funciona dómine?
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-8 relative">
+
+      <!-- Línea conectora (solo desktop) -->
+      <div class="hidden md:block absolute top-12 left-1/6 right-1/6 h-0.5 bg-brand-yellow/30 -z-0"></div>
+
+      {pasos.map((paso) => (
+        <div class="flex flex-col items-center text-center relative z-10">
+          <div class={`${paso.bg} rounded-full w-24 h-24 flex items-center justify-center mb-6`}>
+            <span class={`font-display font-black text-3xl ${paso.color}`}>
+              {paso.numero}
+            </span>
+          </div>
+          <h3 class="font-display font-bold text-xl text-brand-dark mb-3">
+            {paso.titulo}
+          </h3>
+          <p class="text-brand-muted text-sm leading-relaxed">
+            {paso.descripcion}
+          </p>
+        </div>
+      ))}
+
+    </div>
+
+  </div>
+</section>
+

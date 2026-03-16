@@ -1,6 +1,12 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Navbar from '@/components/ui/Navbar.astro';
+import MateriasGrid from '@/components/home/MateriasGrid.astro';
+import UltimosPosts from '@/components/home/UltimosPosts.astro';
+import ComoFunciona from '@/components/home/ComoFunciona.astro';
+import Destacado from '@/components/home/Destacado.astro';
+import BannerDocentes from '@/components/home/BannerDocentes.astro';
+import Footer from '@/components/home/Footer.astro';
 ---
 
 <BaseLayout title="Aprende, juega y descubre">
@@ -83,6 +89,13 @@ import Navbar from '@/components/ui/Navbar.astro';
         ))}
       </div>
     </section>
+
+  <MateriasGrid />
+  <UltimosPosts />
+  <ComoFunciona />
+  <Destacado />
+  <BannerDocentes />
+  <Footer />
   </main>
 </BaseLayout>
 

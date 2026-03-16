@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+// Toma el post más reciente como destacado
+// Luego podrás marcarlo con featured: true en el frontmatter
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const destacado = posts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+)[0];
+---
+
+{destacado && (
+  <section class="py-16 px-4" style="background-color: #f9f9f7;">
+    <div class="max-w-5xl mx-auto">
+
+      <p class="font-display font-bold text-xs uppercase tracking-widest text-brand-yellow mb-4">
+        Recurso destacado
+      </p>
+
+      <a
+        href={`/blog/${destacado.id}`}
+        class="group flex flex-col md:flex-row gap-8 bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
+      >
+        {destacado.data.cover ? (
+          <div class="md:w-2/5 overflow-hidden">
+            <Image
+              src={destacado.data.cover}
+              alt={destacado.data.coverAlt ?? destacado.data.title}
+              class="w-full h-60 md:h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        ) : (
+          <div class="md:w-2/5 bg-brand-yellow/20 flex items-center justify-center h-60">
+            <span class="text-6xl">📚</span>
+          </div>
+        )}
+
+        <div class="flex flex-col justify-center p-8 md:w-3/5">
+          <span class="font-display font-bold text-xs uppercase tracking-widest text-brand-muted mb-3">
+            {destacado.data.tags?.[0] ?? 'Blog'}
+          </span>
+          <h3 class="font-display font-extrabold text-2xl md:text-3xl text-brand-dark mb-4 group-hover:text-brand-yellow transition-colors duration-200 leading-tight">
+            {destacado.data.title}
+          </h3>
+          <p class="text-brand-muted text-sm leading-relaxed mb-6">
+            {destacado.data.description}
+          </p>
+          <span class="font-display font-bold text-sm text-brand-yellow flex items-center gap-2">
+            Leer ahora <span aria-hidden="true">→</span>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+)}
+

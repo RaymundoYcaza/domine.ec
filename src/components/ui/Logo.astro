@@ -1,25 +1,16 @@
 ---
 interface Props {
   width?: number;
-  class?: string;
-  showTagline?: boolean;
+  variant?: 'color' | 'light';
 }
-const { width = 200, class: className = '', showTagline = true } = Astro.props;
+const { width = 160, variant = 'color' } = Astro.props;
+
+const src = variant === 'light'
+  ? '/images/logo-domine-light.svg'
+  : '/images/logo-domine-color.svg';
 ---
 
-<a
-  href="/"
-  aria-label="dómine — Educación Digital"
-  class={`inline-block ${className}`}
-  style={`width: ${width}px`}
->
-  <img
-    src="/images/logo-domine.svg"
-    alt="dómine"
-    width={width}
-    height="auto"
-    loading="eager"
-    decoding="async"
-  />
+<a href="/" aria-label="Dómine">
+  <img src={src} alt="Dómine" width={width} height="auto" loading="lazy" />
 </a>
 
