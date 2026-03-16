@@ -1,0 +1,17 @@
+---
+// src/pages/contacto.astro
+import BaseLayout from '@/layouts/BaseLayout.astro';
+const apiKey = import.meta.env.PUBLIC_WEB3FORMS_KEY; // ✓ en frontmatter, no inline
+---
+
+<BaseLayout title="Contacto — domine.ec">
+  <form action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value={apiKey} />
+    <input type="hidden" name="subject" content="Nuevo contacto desde domine.ec" />
+    <input type="text" name="name" placeholder="Tu nombre" required />
+    <input type="email" name="email" placeholder="Tu email" required />
+    <textarea name="message" placeholder="Tu mensaje" required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+</BaseLayout>
+

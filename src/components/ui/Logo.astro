@@ -1,0 +1,25 @@
+---
+interface Props {
+  width?: number;
+  class?: string;
+  showTagline?: boolean;
+}
+const { width = 200, class: className = '', showTagline = true } = Astro.props;
+---
+
+<a
+  href="/"
+  aria-label="dómine — Educación Digital"
+  class={`inline-block ${className}`}
+  style={`width: ${width}px`}
+>
+  <img
+    src="/images/logo-domine.svg"
+    alt="dómine"
+    width={width}
+    height="auto"
+    loading="eager"
+    decoding="async"
+  />
+</a>
+

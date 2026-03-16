@@ -1,0 +1,88 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Navbar from '@/components/ui/Navbar.astro';
+---
+
+<BaseLayout title="Aprende, juega y descubre">
+  <Navbar />
+
+  <div class="w-full h-1.5 flex">
+    <div class="flex-1 bg-brand-green"></div>
+    <div class="flex-1 bg-brand-yellow"></div>
+    <div class="flex-1 bg-brand-blue"></div>
+  </div>
+
+  <main>
+    <!-- Hero -->
+<section
+  class="min-h-[78vh] flex flex-col items-center justify-end pb-16 text-center px-4 relative"
+  style="
+    background-image: url('/images/domine-hero.jpg');
+    background-size: cover;
+    background-position: center 20%;
+  "
+>
+  <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.85) 55%, rgba(255,255,255,1) 100%);"></div>
+    <div class="relative z-10 w-full max-w-3xl mx-auto">    
+      <h1
+      class="font-display font-extrabold text-5xl md:text-7xl text-brand-dark leading-tight max-w-3xl animate-fade-up"
+      style="text-shadow: 0 1px 3px rgba(255,255,255,0.6);"
+    >
+      Aprende, <span style="color: #E2BB13; text-shadow: 0 1px 3px rgba(0,0,0,0.5);">juega</span> y descubre.
+    </h1>
+<p
+  class="mt-6 text-lg max-w-xl mx-auto animate-fade-up"
+  style="
+    font-family: 'Nunito', system-ui, sans-serif;
+    color: #2F2E2B;
+    opacity: 0.75;
+    animation-delay: 0.1s;
+    text-align: center;
+  "
+>
+  Ayudamos a estudiantes de escuela y colegio a aprender de manera clara y entretenida, usando ejemplos de la vida real.
+</p>
+      <div class="mt-10 flex gap-4 flex-wrap justify-center animate-fade-up" style="animation-delay: 0.2s">
+        <a href="/blog"
+          class="bg-brand-yellow text-brand-dark font-display font-bold px-8 py-3 rounded-full hover:bg-brand-green transition-colors">
+          Ver el blog
+        </a>
+<a
+  href="/contacto"
+  class="
+    border-2 border-brand-dark/40
+    text-brand-dark
+    font-display font-semibold
+    px-8 py-3 rounded-full
+    bg-white/60 backdrop-blur-sm
+    transition-all duration-200
+    hover:bg-brand-blue/40
+    hover:border-brand-blue
+    hover:text-brand-dark
+  "
+>
+  Contacto
+</a>
+      </div>
+    </div>
+  </section>
+
+    <!-- Valores / Cards -->
+    <section class="py-20 bg-brand-green/10 px-4">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        {[
+          { icon: '🎮', title: 'Aprende jugando', color: 'bg-brand-yellow/30', desc: 'Dinámicas lúdicas y ejemplos de la vida real.' },
+          { icon: '🔍', title: 'Curiosidad guiada', color: 'bg-brand-blue/30',   desc: 'Descubrimiento activo que despierta motivación.' },
+          { icon: '💬', title: 'Claridad práctica', color: 'bg-brand-green/40',  desc: 'Conceptos con conexiones directas a tu vida.' },
+        ].map(card => (
+          <div class={`${card.color} rounded-2xl p-8 text-center`}>
+            <span class="text-4xl">{card.icon}</span>
+            <h3 class="font-display font-700 text-xl mt-4 text-brand-dark">{card.title}</h3>
+            <p class="text-brand-muted mt-2 font-body text-sm">{card.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
