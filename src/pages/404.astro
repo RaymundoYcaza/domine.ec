@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/ui/Navbar.astro';
+import Footer from '../components/home/Footer.astro';
+---
+
+<BaseLayout title="Página no encontrada — dómine">
+  <Navbar />
+
+  <!-- Barra tricolor -->
+  <div class="w-full h-1.5 flex">
+    <div class="flex-1 bg-brand-green"></div>
+    <div class="flex-1 bg-brand-yellow"></div>
+    <div class="flex-1 bg-brand-blue"></div>
+  </div>
+
+  <main class="relative flex flex-col items-center justify-center text-center px-4 py-20 min-h-[75svh] overflow-hidden">
+
+    <!-- 404 de fondo — ocupa todo el ancho -->
+    <span
+      class="absolute inset-0 flex items-center justify-center font-display font-black select-none pointer-events-none"
+      style="font-size: clamp(8rem, 30vw, 22rem); color: #222222; opacity: 0.08; line-height: 1;"
+      aria-hidden="true"
+    >
+      404
+    </span>
+
+    <!-- Contenido encima -->
+    <div class="relative z-10 flex flex-col items-center">
+      <span class="text-6xl mb-6">📚</span>
+
+      <h1 class="font-display font-extrabold text-3xl md:text-4xl text-brand-dark mb-4">
+        ¡Ups! Esta página no existe
+      </h1>
+
+      <p class="text-brand-muted text-lg max-w-md mb-10 mx-auto">
+        Parece que la página que buscas se perdió en el recreo. Pero no te preocupes, hay mucho más por descubrir.
+      </p>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          href="/"
+          class="bg-brand-yellow text-brand-dark font-display font-bold px-8 py-3 rounded-full hover:bg-brand-green transition-colors duration-200"
+        >
+          Ir al inicio
+        </a>
+        <a
+          href="/blog"
+          class="border-2 border-brand-dark/20 text-brand-dark font-display font-semibold px-8 py-3 rounded-full hover:bg-brand-blue/20 hover:border-brand-blue transition-colors duration-200"
+        >
+          Ver el blog
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+</BaseLayout>
+

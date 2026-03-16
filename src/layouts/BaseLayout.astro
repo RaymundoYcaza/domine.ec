@@ -1,5 +1,6 @@
 ---
 import '@/styles/global.css';
+import Footer from '../components/home/Footer.astro';
 interface Props {
   title: string;
   description?: string;
@@ -34,8 +35,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:image" content="/og-domine.jpg" />
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen">  
     <slot />
+    <Footer />
   </body>
 </html>
 
